@@ -14,13 +14,14 @@ import java.util.Map;
 
 public class MainWindow extends JFrame {
     //variables
-    private final String token = "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";
     private List<Map<String, Long>> maps;
     private JTextField tf_repositoryName;
     private JTable jt_repositorySelect;
     private JTable jt_repositoryDetail;
     private JPanel mainWindow;
     private JButton jb_dataButton;
+    private JTextField tf_token;
+
     //constructor
     private MainWindow(String title) {
         super(title);
@@ -81,6 +82,7 @@ public class MainWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             String string_username = getTf_repositoryName().getText();
+            String token = tf_token.getText();
             try {
                 GitHub git = GitHub.connectUsingOAuth(token);
                 GHUser user = git.getUser(string_username);
